@@ -15,7 +15,8 @@ app.use(express.json());
 
 // Configure CORS
 const allowedOrigins = [
-    `https://shopping-frontend-3.onrender.com`,
+    // `https://shopping-frontend-3.onrender.com`,
+    `https://shopping-frontend-gold.vercel.app`
     // `https://shopping-frontend-1-tjbb.onrender.com`,
     `https://e-commerce-shopping-admin.onrender.com`
 ];
@@ -55,14 +56,14 @@ app.use('/images', express.static(path.join(__dirname, 'upload/images')));
 // app.post("/upload", upload.single('product'), (req, res) => {
 //     res.json({
 //         success: 1,
-//         image_url: `http://localhost:4000/images/${req.file.filename}`
+//         image_url: `https://shopping-backendd.onrender.com/images/${req.file.filename}`
 //     });
 // });
 app.post("/upload", upload.single('product'), (req, res) => {
     if (req.file && req.file.filename) {
         res.json({
             success: 1,
-            image_url: `http://localhost:4000/images/${req.file.filename}`
+            image_url: `https://shopping-backendd.onrender.com/images/${req.file.filename}`
         });
     } else {
         res.status(400).json({
@@ -160,13 +161,13 @@ app.get('/allproducts', async (req, res) => {
             let updatedImage = product.image;
 
             // Replace local development URL with production URL
-            if (updatedImage.startsWith('http://localhost:4000')) {
-                updatedImage = updatedImage.replace('http://localhost:4000', 'http://localhost:4000');
+            if (updatedImage.startsWith('https://shopping-backendd.onrender.com')) {
+                updatedImage = updatedImage.replace('https://shopping-backendd.onrender.com', 'https://shopping-backendd.onrender.com');
             }
 
             // If using HTTPS in production or other URL schemes
             if (updatedImage.startsWith('https://localhost:4000')) {
-                updatedImage = updatedImage.replace('https://localhost:4000', 'http://localhost:4000');
+                updatedImage = updatedImage.replace('https://localhost:4000', 'https://shopping-backendd.onrender.com');
             }
 
             return {
@@ -321,11 +322,11 @@ app.get('/newcollections', async (req, res) => {
         let products = await Product.find({});
         let newcollection = products.slice(1).slice(-8).map(product => {
             let updatedImage = product.image;
-            if (updatedImage.startsWith('http://localhost:4000')) {
-                updatedImage = updatedImage.replace('http://localhost:4000', 'http://localhost:4000');
+            if (updatedImage.startsWith('https://shopping-backendd.onrender.com')) {
+                updatedImage = updatedImage.replace('https://shopping-backendd.onrender.com', 'https://shopping-backendd.onrender.com');
             }
             if (updatedImage.startsWith('https://localhost:4000')) {
-                updatedImage = updatedImage.replace('https://localhost:4000', 'http://localhost:4000');
+                updatedImage = updatedImage.replace('https://localhost:4000', 'https://shopping-backendd.onrender.com');
             }
             return {
                 ...product.toObject(),
@@ -356,11 +357,11 @@ app.get('/popularinwomen', async (req, res) => {
         let products = await Product.find({ category: "women" });
         let popular_in_women = products.slice(0, 4).map(product => {
             let updatedImage = product.image;
-            if (updatedImage.startsWith('http://localhost:4000')) {
-                updatedImage = updatedImage.replace('http://localhost:4000', 'http://localhost:4000');
+            if (updatedImage.startsWith('https://shopping-backendd.onrender.com')) {
+                updatedImage = updatedImage.replace('https://shopping-backendd.onrender.com', 'https://shopping-backendd.onrender.com');
             }
             if (updatedImage.startsWith('https://localhost:4000')) {
-                updatedImage = updatedImage.replace('https://localhost:4000', 'http://localhost:4000');
+                updatedImage = updatedImage.replace('https://localhost:4000', 'https://shopping-backendd.onrender.com');
             }
             return {
                 ...product.toObject(),
@@ -504,7 +505,7 @@ app.listen(port, () => {
 // app.post("/upload", upload.single('product'), (req, res) => {
 //     res.json({
 //         success: 1,
-//         image_url: `http://localhost:4000/images/${req.file.filename}`
+//         image_url: `https://shopping-backendd.onrender.com/images/${req.file.filename}`
 //     });
 // });
 
