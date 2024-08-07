@@ -9,11 +9,14 @@ const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
 
+
+
 app.use(express.json());
 
 // Configure CORS
 const allowedOrigins = [
-    `https://shopping-frontend-1-tjbb.onrender.com`,
+    `https://shopping-frontend-3.onrender.com`,
+    // `https://shopping-frontend-1-tjbb.onrender.com`,
     `https://e-commerce-shopping-admin.onrender.com`
 ];
 
@@ -52,14 +55,14 @@ app.use('/images', express.static(path.join(__dirname, 'upload/images')));
 // app.post("/upload", upload.single('product'), (req, res) => {
 //     res.json({
 //         success: 1,
-//         image_url: `https://shopping-backend-ch7k.onrender.com/images/${req.file.filename}`
+//         image_url: `http://localhost:4000/images/${req.file.filename}`
 //     });
 // });
 app.post("/upload", upload.single('product'), (req, res) => {
     if (req.file && req.file.filename) {
         res.json({
             success: 1,
-            image_url: `https://shopping-backend-ch7k.onrender.com/images/${req.file.filename}`
+            image_url: `http://localhost:4000/images/${req.file.filename}`
         });
     } else {
         res.status(400).json({
@@ -158,12 +161,12 @@ app.get('/allproducts', async (req, res) => {
 
             // Replace local development URL with production URL
             if (updatedImage.startsWith('http://localhost:4000')) {
-                updatedImage = updatedImage.replace('http://localhost:4000', 'https://shopping-backend-ch7k.onrender.com');
+                updatedImage = updatedImage.replace('http://localhost:4000', 'http://localhost:4000');
             }
 
             // If using HTTPS in production or other URL schemes
             if (updatedImage.startsWith('https://localhost:4000')) {
-                updatedImage = updatedImage.replace('https://localhost:4000', 'https://shopping-backend-ch7k.onrender.com');
+                updatedImage = updatedImage.replace('https://localhost:4000', 'http://localhost:4000');
             }
 
             return {
@@ -319,10 +322,10 @@ app.get('/newcollections', async (req, res) => {
         let newcollection = products.slice(1).slice(-8).map(product => {
             let updatedImage = product.image;
             if (updatedImage.startsWith('http://localhost:4000')) {
-                updatedImage = updatedImage.replace('http://localhost:4000', 'https://shopping-backend-ch7k.onrender.com');
+                updatedImage = updatedImage.replace('http://localhost:4000', 'http://localhost:4000');
             }
             if (updatedImage.startsWith('https://localhost:4000')) {
-                updatedImage = updatedImage.replace('https://localhost:4000', 'https://shopping-backend-ch7k.onrender.com');
+                updatedImage = updatedImage.replace('https://localhost:4000', 'http://localhost:4000');
             }
             return {
                 ...product.toObject(),
@@ -354,10 +357,10 @@ app.get('/popularinwomen', async (req, res) => {
         let popular_in_women = products.slice(0, 4).map(product => {
             let updatedImage = product.image;
             if (updatedImage.startsWith('http://localhost:4000')) {
-                updatedImage = updatedImage.replace('http://localhost:4000', 'https://shopping-backend-ch7k.onrender.com');
+                updatedImage = updatedImage.replace('http://localhost:4000', 'http://localhost:4000');
             }
             if (updatedImage.startsWith('https://localhost:4000')) {
-                updatedImage = updatedImage.replace('https://localhost:4000', 'https://shopping-backend-ch7k.onrender.com');
+                updatedImage = updatedImage.replace('https://localhost:4000', 'http://localhost:4000');
             }
             return {
                 ...product.toObject(),
@@ -501,7 +504,7 @@ app.listen(port, () => {
 // app.post("/upload", upload.single('product'), (req, res) => {
 //     res.json({
 //         success: 1,
-//         image_url: `https://shopping-backend-ch7k.onrender.com/images/${req.file.filename}`
+//         image_url: `http://localhost:4000/images/${req.file.filename}`
 //     });
 // });
 
