@@ -9,19 +9,15 @@ const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
 
-app.use(cors({
-  origin: 'https://shopping-frontend-y7kz.vercel.app' // Replace with your frontend URL
-}));
 
 app.use(express.json());
 
 // Configure CORS
+// Configure CORS
 const allowedOrigins = [
-    // `https://shopping-frontend-3.onrender.com`,
-    `http://localhost:3000`
-    `https://shopping-frontend-y7kz.vercel.app`,
-    // `https://shopping-frontend-1-tjbb.onrender.com`,
-    `https://e-commerce-shopping-admin.onrender.com`
+    'http://localhost:3000',
+    'https://shopping-frontend-y7kz.vercel.app',
+    'https://e-commerce-shopping-admin.onrender.com'
 ];
 
 app.use(cors({
