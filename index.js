@@ -12,8 +12,6 @@ const cors = require("cors");
 
 app.use(express.json());
 
-// Configure CORS
-// Configure CORS
 const allowedOrigins = [
     'http://localhost:3000',
     'https://shopping-frontend-y7kz.vercel.app',
