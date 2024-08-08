@@ -16,7 +16,7 @@ app.use(express.json());
 // Configure CORS
 const allowedOrigins = [
     // `https://shopping-frontend-3.onrender.com`,
-    `https://shopping-frontend-gold.vercel.app`,
+    `https://shopping-frontend-y7kz.vercel.app`,
     // `https://shopping-frontend-1-tjbb.onrender.com`,
     `https://e-commerce-shopping-admin.onrender.com`
 ];
