@@ -9,7 +9,9 @@ const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
 
-
+app.use(cors({
+  origin: 'https://shopping-frontend-y7kz.vercel.app' // Replace with your frontend URL
+}));
 
 app.use(express.json());
 
